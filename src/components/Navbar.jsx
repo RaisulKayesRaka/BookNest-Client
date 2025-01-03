@@ -16,7 +16,7 @@ export default function Navbar() {
   };
   return (
     <nav className={`sticky top-0 z-50 bg-slate-100`}>
-      <section className="mx-auto flex w-11/12 max-w-screen-2xl items-center justify-between gap-4 py-4">
+      <section className="mx-auto flex w-11/12 max-w-screen-xl items-center justify-between gap-4 py-4">
         <div className="flex items-center justify-center gap-2">
           <img src="/booknest.png" className="h-8" alt="BookNest Logo" />
           <span className="self-center whitespace-nowrap text-2xl font-semibold">
@@ -76,7 +76,7 @@ export default function Navbar() {
                   <p className="whitespace-nowrap font-semibold">
                     {user?.displayName}
                   </p>
-                  <button className="w-full rounded-lg border border-blue-500 px-4 py-1 text-center text-blue-500">
+                  <button className="w-full rounded-lg border border-blue-500 px-4 py-1.5 text-center text-blue-500">
                     Logout
                   </button>
                 </div>
@@ -88,8 +88,8 @@ export default function Navbar() {
                 to="/login"
                 className={({ isActive }) =>
                   isActive
-                    ? "active rounded-lg border-blue-500 bg-blue-500 px-4 py-1 font-semibold text-white"
-                    : "rounded-lg border border-blue-500 px-4 py-1 text-blue-500"
+                    ? "active rounded-lg border-blue-500 bg-blue-500 px-4 py-1.5 font-semibold text-white"
+                    : "rounded-lg border border-blue-500 px-4 py-1.5 text-blue-500"
                 }
               >
                 Login
@@ -98,8 +98,8 @@ export default function Navbar() {
                 to="/register"
                 className={({ isActive }) =>
                   isActive
-                    ? "active rounded-lg border-blue-500 bg-blue-500 px-4 py-1 font-semibold text-white"
-                    : "rounded-lg border border-blue-500 px-4 py-1 text-blue-500"
+                    ? "active rounded-lg border-blue-500 bg-blue-500 px-4 py-1.5 font-semibold text-white"
+                    : "rounded-lg border border-blue-500 px-4 py-1.5 text-blue-500"
                 }
               >
                 Register
@@ -188,7 +188,7 @@ export default function Navbar() {
                   />
                 </div>
                 <p className="font-semibold">{user?.displayName}</p>
-                <button className="w-full rounded-lg border border-blue-500 px-4 py-1 text-center text-blue-500">
+                <button className="w-full rounded-lg border border-blue-500 px-4 py-1.5 text-center text-blue-500">
                   Logout
                 </button>
               </div>
@@ -199,8 +199,8 @@ export default function Navbar() {
                   onClick={closeSidebar}
                   className={({ isActive }) =>
                     isActive
-                      ? "active rounded-lg border-blue-500 bg-blue-500 px-3 py-4 text-center font-semibold text-white"
-                      : "rounded-lg border border-blue-500 px-3 py-1 text-center text-blue-500"
+                      ? "active rounded-lg border-blue-500 bg-blue-500 px-4 py-1.5 text-center font-semibold text-white"
+                      : "rounded-lg border border-blue-500 px-4 py-1.5 text-center text-blue-500"
                   }
                 >
                   Login
@@ -210,8 +210,8 @@ export default function Navbar() {
                   onClick={closeSidebar}
                   className={({ isActive }) =>
                     isActive
-                      ? "active rounded-lg border-blue-500 bg-blue-500 px-4 py-1 text-center font-semibold text-white"
-                      : "rounded-lg border border-blue-500 px-3 py-1 text-center text-blue-500"
+                      ? "active rounded-lg border-blue-500 bg-blue-500 px-4 py-1.5 text-center font-semibold text-white"
+                      : "rounded-lg border border-blue-500 px-4 py-1.5 text-center text-blue-500"
                   }
                 >
                   Register
