@@ -69,16 +69,22 @@ export default function Navbar() {
           {user && user?.email ? (
             <div className="group relative flex items-center gap-2">
               <div>
-                <img src={user?.photoURL} alt="" className="h-8 w-8 rounded" />
+                <img
+                  src={user?.photoURL}
+                  alt=""
+                  className="h-8 w-8 rounded-lg"
+                />
               </div>
-              <div className="absolute right-0 top-full hidden w-72 rounded bg-white p-4 shadow group-hover:block">
-                <div className="space-y-4">
-                  <p className="whitespace-nowrap font-semibold">
-                    {user?.displayName}
-                  </p>
-                  <button className="w-full rounded-lg border border-blue-500 px-4 py-1.5 text-center text-blue-500">
-                    Logout
-                  </button>
+              <div className="absolute right-0 top-0 hidden w-72 group-hover:block">
+                <div>
+                  <div className="mt-12 space-y-4 rounded-lg bg-white p-4 shadow">
+                    <p className="whitespace-nowrap font-semibold">
+                      {user?.displayName}
+                    </p>
+                    <button className="w-full rounded-lg bg-blue-500 px-4 py-1.5 text-center font-semibold text-white hover:bg-blue-600">
+                      Logout
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
