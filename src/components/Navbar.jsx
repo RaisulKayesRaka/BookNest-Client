@@ -1,12 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 export default function Navbar() {
-  const user = {
-    displayName: "Raisul Kayes Raka",
-    email: "",
-  };
+  const { user, logOut } = useContext(AuthContext);
 
   const openSidebar = () => {
     document.getElementById("sidebar").style.transform = "translateX(-16rem)";
@@ -73,6 +72,7 @@ export default function Navbar() {
                   src={user?.photoURL}
                   alt=""
                   className="h-8 w-8 rounded-lg"
+                  referrerPolicy="no-referrer"
                 />
               </div>
               <div className="absolute right-0 top-0 hidden w-72 group-hover:block">
@@ -81,7 +81,10 @@ export default function Navbar() {
                     <p className="whitespace-nowrap font-semibold">
                       {user?.displayName}
                     </p>
-                    <button className="w-full rounded-lg bg-blue-500 px-4 py-1.5 text-center font-semibold text-white hover:bg-blue-600">
+                    <button
+                      onClick={logOut}
+                      className="w-full rounded-lg bg-blue-500 px-4 py-1.5 text-center font-semibold text-white hover:bg-blue-600"
+                    >
                       Logout
                     </button>
                   </div>
@@ -191,10 +194,14 @@ export default function Navbar() {
                     src={user?.photoURL}
                     alt=""
                     className="h-12 w-12 rounded"
+                    referrerPolicy="no-referrer"
                   />
                 </div>
                 <p className="font-semibold">{user?.displayName}</p>
-                <button className="w-full rounded-lg border border-blue-500 px-4 py-1.5 text-center text-blue-500">
+                <button
+                  onClick={logOut}
+                  className="w-full rounded-lg border border-blue-500 px-4 py-1.5 text-center text-blue-500"
+                >
                   Logout
                 </button>
               </div>

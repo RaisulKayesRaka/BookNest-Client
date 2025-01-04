@@ -34,7 +34,9 @@ export default function AllBooks() {
 
   return (
     <section className="mx-auto w-11/12 max-w-screen-xl py-8">
-      <h1 className="pb-8 text-2xl font-semibold">All Books</h1>
+      <h1 className="mb-8 flex items-center justify-center rounded-lg border bg-blue-500 p-4 text-2xl font-semibold text-white">
+        All Books
+      </h1>
       <section className="mb-4 flex items-center justify-between">
         <button
           onClick={() => setBooks(books.filter((book) => book?.quantity > 0))}

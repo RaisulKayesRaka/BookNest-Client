@@ -36,7 +36,9 @@ export default function BorrowedBooks() {
 
   return (
     <section className="mx-auto w-11/12 max-w-screen-xl py-8">
-      <h1 className="pb-8 text-2xl font-semibold">Borrowed Books</h1>
+      <h1 className="mb-8 flex items-center justify-center rounded-lg border bg-blue-500 p-4 text-2xl font-semibold text-white">
+        Borrowed Books
+      </h1>
 
       <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {books.map((book) => (
@@ -57,7 +59,7 @@ export default function BorrowedBooks() {
                 {book?.title}
               </h3>
             </div>
-            <hr />
+
             <div className="space-y-1 rounded-lg bg-slate-100 p-4">
               <p className="">
                 <span className="font-semibold">Borrowed Date:</span>{" "}

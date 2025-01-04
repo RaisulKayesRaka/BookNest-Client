@@ -9,6 +9,10 @@ import Home from "./pages/Home.jsx";
 import CategoryPage from "./pages/CategoryPage.jsx";
 import AllBooks from "./pages/AllBooks.jsx";
 import BorrowedBooks from "./pages/BorrowedBooks.jsx";
+import LogIn from "./pages/Login.jsx";
+import Register from "./pages/Register.jsx";
+import AuthProvider from "./provider/AuthProvider.jsx";
+import PrivateRoute from "./PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,11 +30,27 @@ const router = createBrowserRouter([
       },
       {
         path: "/all-books",
-        element: <AllBooks />,
+        element: (
+          <PrivateRoute>
+            <AllBooks />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/borrowed-books",
-        element: <BorrowedBooks />,
+        element: (
+          <PrivateRoute>
+            <BorrowedBooks />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/login",
+        element: <LogIn />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
     ],
   },
@@ -39,7 +59,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <HelmetProvider>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </HelmetProvider>
   </StrictMode>,
 );
