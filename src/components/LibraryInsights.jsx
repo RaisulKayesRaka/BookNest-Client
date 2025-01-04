@@ -39,11 +39,11 @@ export default function LibraryInsights() {
       </section>
       <div className="h-8"></div>
 
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat) => (
           <div
             key={stat.id}
-            className="flex flex-col items-center justify-center rounded-xl border border-blue-500 p-6"
+            className="flex flex-col items-center justify-center rounded-lg border border-blue-500 p-6"
           >
             <h3 className="text-3xl font-bold text-blue-500">
               <CountUp end={stat.value} duration={10} suffix="+" />

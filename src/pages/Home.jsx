@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import Banner from "../components/Banner";
 import LibraryInsights from "../components/LibraryInsights";
 import FAQ from "../components/FAQ";
+import Categories from "../components/Categories";
 
 export default function Home() {
   return (
@@ -10,6 +11,8 @@ export default function Home() {
         <title>BookNest</title>
       </Helmet>
       <Banner />
+      <Categories />
+      <hr className="mx-auto w-1/2 max-w-prose border-blue-500" />
       <LibraryInsights />
       <hr className="mx-auto w-1/2 max-w-prose border-blue-500" />
       <FAQ />
