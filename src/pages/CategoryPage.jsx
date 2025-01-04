@@ -26,7 +26,7 @@ export default function CategoryPage() {
 
   return (
     <section className="mx-auto w-11/12 max-w-screen-xl py-8">
-      <h1 className="pb-8 text-3xl font-semibold">Science Fiction Books</h1>
+      <h1 className="pb-8 text-2xl font-semibold">Science Fiction Books</h1>
       <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {books.map((book) => (
           <div

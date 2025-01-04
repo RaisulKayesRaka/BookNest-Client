@@ -7,6 +7,7 @@ import ErrorPage from "./pages/ErrorPage.jsx";
 import { HelmetProvider } from "react-helmet-async";
 import Home from "./pages/Home.jsx";
 import CategoryPage from "./pages/CategoryPage.jsx";
+import AllBooks from "./pages/AllBooks.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         path: "/categories/:category",
         element: <CategoryPage />,
       },
+      {
+        path: "/all-books",
+        element: <AllBooks />,
+      }
     ],
   },
 ]);
