@@ -30,38 +30,40 @@ export default function CategoryPage() {
       <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {books.map((book) => (
           <div
-            key={book.id}
+            key={book?.id}
             className="flex flex-col gap-4 rounded-xl border p-4 shadow"
           >
             <img
-              src={book.image}
+              src={book?.image}
               className="aspect-video w-full rounded-md object-contain"
               alt="Book Cover"
             />
             <p className="rounded-lg bg-blue-100 px-4 py-1 text-center text-sm font-semibold text-blue-600">
-              {book.category}
+              {book?.category}
             </p>
             <div className="flex-1">
               <h3 className="text-center font-bold transition-colors">
-                {book.title}
+                {book?.title}
               </h3>
-              <p className="text-center text-sm italic">{book.author}</p>
+              <p className="text-center text-sm italic">{book?.author}</p>
             </div>
 
-            <p className="text-center">
-              <span className="font-semibold">Quantity:</span> {book.quantity}
-            </p>
-
-            <div className="flex items-center justify-center gap-4 rounded-lg bg-slate-100 p-2">
-              <p className="font-semibold">Rating:</p>
-              <ReactStars
-                count={5}
-                value={book.rating}
-                isHalf={true}
-                size={24}
-                edit={false}
-              />
-              <span className="text-sm">{book.rating}/5</span>
+            <div className="rounded-lg bg-slate-100 p-4">
+              <p className="">
+                <span className="font-semibold">Quantity:</span>{" "}
+                {book?.quantity}
+              </p>
+              <div className="flex items-center gap-4">
+                <p className="font-semibold">Rating:</p>
+                <ReactStars
+                  count={5}
+                  value={book?.rating}
+                  isHalf={true}
+                  size={24}
+                  edit={false}
+                />
+                <span className="text-sm">{book?.rating}/5</span>
+              </div>
             </div>
 
             <button className="w-full rounded-lg bg-blue-500 px-4 py-1.5 font-semibold text-white transition-colors hover:bg-blue-600">

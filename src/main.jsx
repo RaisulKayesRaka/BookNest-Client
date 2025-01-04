@@ -8,6 +8,7 @@ import { HelmetProvider } from "react-helmet-async";
 import Home from "./pages/Home.jsx";
 import CategoryPage from "./pages/CategoryPage.jsx";
 import AllBooks from "./pages/AllBooks.jsx";
+import BorrowedBooks from "./pages/BorrowedBooks.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,11 @@ const router = createBrowserRouter([
       {
         path: "/all-books",
         element: <AllBooks />,
-      }
+      },
+      {
+        path: "/borrowed-books",
+        element: <BorrowedBooks />,
+      },
     ],
   },
 ]);
