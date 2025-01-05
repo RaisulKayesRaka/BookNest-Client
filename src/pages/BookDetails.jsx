@@ -1,47 +1,32 @@
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import ReactStars from "react-rating-stars-component";
+import axios from "axios";
+import Loading from "../components/Loading";
 
 export default function BookDetails() {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
+  const [book, setBook] = useState({});
+  const [loading, setLoading] = useState(false);
 
-  const books = [
-    {
-      id: 1,
-      name: "The Expanse: Nemesis Games",
-      authorName: "James S. A. Corey",
-      category: "Science Fiction",
-      quantity: 5,
-      rating: 4.5,
-      image:
-        "https://i.thriftbooks.com/api/imagehandler/l/B256EA247045FB2E8104E20F9A3DFC74E442B777.jpeg",
-    },
-    {
-      id: 2,
-      name: "The Expanse: Nemesis Games",
-      authorName: "James S. A. Corey",
-      category: "Science Fiction",
-      quantity: 5,
-      rating: 3,
-      image:
-        "https://i.thriftbooks.com/api/imagehandler/l/B256EA247045FB2E8104E20F9A3DFC74E442B777.jpeg",
-    },
-    {
-      id: 3,
-      name: "Rich Dad Poor Dad",
-      authorName: "Robert Kiosaki",
-      category: "Business",
-      quantity: 5,
-      rating: 3,
-      image:
-        "https://i.thriftbooks.com/api/imagehandler/l/B256EA247045FB2E8104E20F9A3DFC74E442B777.jpeg",
-    },
-  ];
+  useEffect(() => {
+    const fetchBook = async () => {
+      setLoading(true);
+      try {
+        const { data } = await axios.get("http://localhost:5000/book/" + id);
+        setBook(data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const loaderData = books.find((book) => book.id == id);
+    fetchBook();
+  }, [id]);
 
   const handleBorrowSubmit = (e) => {
     e.preventDefault();
@@ -54,7 +39,7 @@ export default function BookDetails() {
       returnDate,
       borrowerName,
       borrowerEmail,
-      bookId: loaderData?._id,
+      bookId: book?._id,
     };
 
     console.log(borrowDetails);
@@ -70,61 +55,55 @@ export default function BookDetails() {
           Book Details
         </h1>
 
-        <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-          <img
-            src={loaderData?.image}
-            alt={loaderData?.name}
-            className="w-full rounded-lg"
-          />
-          <div className="sm:col-span-1 md:col-span-2">
-            <h2 className="text-2xl font-semibold">{loaderData?.name}</h2>
-            <p className="mb-4">{loaderData?.authorName}</p>
-            <p className="mb-4 inline-block rounded-lg bg-blue-100 px-4 py-1 text-center text-sm font-semibold text-blue-600">
-              {loaderData?.category}
-            </p>
-            <p className="mb-2">
-              <span className="font-semibold">Quantity:</span>{" "}
-              {loaderData?.quantity}
-            </p>
+        {loading ? (
+          <Loading />
+        ) : (
+          <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+            <div className="flex items-center justify-center rounded-lg bg-blue-50 p-4">
+              <img src={book?.image} alt={book?.name} className="rounded-lg" />
+            </div>
+            <div className="sm:col-span-1 md:col-span-2">
+              <h2 className="text-2xl font-semibold">{book?.name}</h2>
+              <p className="mb-4">{book?.authorName}</p>
+              <p className="mb-4 inline-block rounded-lg bg-blue-100 px-4 py-1 text-center text-sm font-semibold text-blue-600">
+                {book?.category}
+              </p>
+              <p className="mb-2">
+                <span className="font-semibold">Quantity:</span>{" "}
+                {book?.quantity}
+              </p>
 
-            <div className="mb-3 flex items-center gap-4">
-              <p className="font-semibold">Rating:</p>
-              <ReactStars
-                count={5}
-                value={4.5}
-                isHalf={true}
-                size={24}
-                edit={false}
-              />
-              <span className="text-sm">{4.5}/5</span>
+              <div className="mb-3 flex items-center gap-4">
+                <p className="font-semibold">Rating:</p>
+                <ReactStars
+                  key={book?._id}
+                  count={5}
+                  value={book?.rating}
+                  isHalf={true}
+                  size={24}
+                  edit={false}
+                />
+                <span className="text-sm">{book?.rating}/5</span>
+              </div>
+              <div className="mb-4 rounded-lg bg-blue-50 p-4">
+                <p className="mb-2 font-semibold">Short Description:</p>
+                <p>{book?.shortDescription}</p>
+              </div>
+              <div className="mb-4 rounded-lg bg-blue-50 p-4">
+                <p className="mb-2 font-semibold">Book Content:</p>
+                <p>{book?.bookContent}</p>
+              </div>
+              <button
+                onClick={() =>
+                  document.getElementById("borrow_modal").showModal()
+                }
+                className="w-full rounded-lg bg-blue-500 px-4 py-2 font-semibold text-white"
+              >
+                Borrow this book
+              </button>
             </div>
-            <div className="mb-4 rounded-lg bg-blue-50 p-4">
-              <p className="mb-2 font-semibold">Short Description:</p>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Possimus esse omnis voluptatem delectus. Impedit assumenda
-                dignissimos modi eaque molestiae hic?
-              </p>
-            </div>
-            <div className="mb-4 rounded-lg bg-blue-50 p-4">
-              <p className="mb-2 font-semibold">Book Content:</p>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Possimus esse omnis voluptatem delectus. Impedit assumenda
-                dignissimos modi eaque molestiae hic?
-              </p>
-            </div>
-            <button
-              onClick={() =>
-                document.getElementById("borrow_modal").showModal()
-              }
-              className="w-full rounded-lg bg-blue-500 px-4 py-2 font-semibold text-white"
-            >
-              Borrow this book
-            </button>
-          </div>
-        </section>
-        {/* Borrow Book Modal */}
+          </section>
+        )}
         <dialog id="borrow_modal" className="modal">
           <div className="modal-box">
             <form method="dialog">
