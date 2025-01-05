@@ -6,41 +6,33 @@ import toast from "react-hot-toast";
 
 export default function AddBook() {
   const { user } = useContext(AuthContext);
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const image = form.image.value;
-    const name = form.name.value;
-    const authorName = form.authorName.value;
-    const category = form.category.value;
-    const quantity = parseInt(form.quantity.value);
-    const rating = parseFloat(form.rating.value);
-    const shortDescription = form.shortDescription.value;
-    const bookContent = form.bookContent.value;
-
     const newBook = {
       email: user?.email,
-      image,
-      name,
-      authorName,
-      category,
-      quantity,
-      rating,
-      shortDescription,
-      bookContent,
+      image: form.image.value,
+      name: form.name.value,
+      authorName: form.authorName.value,
+      category: form.category.value,
+      quantity: parseInt(form.quantity.value),
+      rating: parseFloat(form.rating.value),
+      shortDescription: form.shortDescription.value,
+      bookContent: form.bookContent.value,
     };
 
-    axios
-      .post("http://localhost:5000/add-book", newBook)
-      .then(function (response) {
-        if (response.data.insertedId) {
-          toast.success("Book added successfully");
-          form.reset();
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5000/add-book",
+        newBook,
+      );
+      if (data.insertedId) {
+        toast.success("Book added successfully");
+        form.reset();
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
