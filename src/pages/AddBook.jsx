@@ -1,30 +1,46 @@
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import toast from "react-hot-toast";
 
 export default function AddBook() {
+  const { user } = useContext(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const image = form.image.value;
     const name = form.name.value;
-    const category = form.category.value;
     const authorName = form.authorName.value;
-    const quantity = form.quantity.value;
-    const rating = form.rating.value;
+    const category = form.category.value;
+    const quantity = parseInt(form.quantity.value);
+    const rating = parseFloat(form.rating.value);
     const shortDescription = form.shortDescription.value;
     const bookContent = form.bookContent.value;
 
     const newBook = {
+      email: user?.email,
       image,
       name,
-      category,
       authorName,
+      category,
       quantity,
       rating,
       shortDescription,
       bookContent,
     };
 
-    console.log(newBook);
+    axios
+      .post("http://localhost:5000/add-book", newBook)
+      .then(function (response) {
+        if (response.data.insertedId) {
+          toast.success("Book added successfully");
+          form.reset();
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
@@ -45,10 +61,10 @@ export default function AddBook() {
                   Image
                 </label>
                 <input
-                  type="text"
+                  type="url"
                   id="image"
                   name="image"
-                  placeholder="Enter image URL (e.g., imgbb)"
+                  placeholder="Enter image URL"
                   className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-[#749BC2]"
                   required
                 />
@@ -59,7 +75,7 @@ export default function AddBook() {
                   Name
                 </label>
                 <input
-                  type="url"
+                  type="text"
                   id="name"
                   name="name"
                   placeholder="Enter title of the book"
@@ -130,6 +146,7 @@ export default function AddBook() {
                   placeholder="Enter rating (1-5)"
                   min={1}
                   max={5}
+                  step="0.1"
                   className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-[#749BC2]"
                   required
                 />
