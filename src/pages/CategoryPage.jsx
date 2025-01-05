@@ -1,6 +1,8 @@
 import ReactStars from "react-rating-stars-component";
+import { Link, useParams } from "react-router-dom";
 
 export default function CategoryPage() {
+  const { category } = useParams();
   const books = [
     {
       id: 1,
@@ -22,15 +24,27 @@ export default function CategoryPage() {
       image:
         "https://i.thriftbooks.com/api/imagehandler/l/B256EA247045FB2E8104E20F9A3DFC74E442B777.jpeg",
     },
+    {
+      id: 3,
+      title: "Rich Dad Poor Dad",
+      author: "Robert Kiosaki",
+      category: "Business",
+      quantity: 5,
+      rating: 3,
+      image:
+        "https://i.thriftbooks.com/api/imagehandler/l/B256EA247045FB2E8104E20F9A3DFC74E442B777.jpeg",
+    },
   ];
+
+  const filteredBooks = books.filter((book) => book.category === category);
 
   return (
     <section className="mx-auto w-11/12 max-w-screen-xl py-8">
       <h1 className="mb-8 flex items-center justify-center rounded-lg border bg-blue-500 p-4 text-2xl font-semibold text-white">
-        Science Fiction Books
+        {category} Books
       </h1>
       <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {books.map((book) => (
+        {filteredBooks.map((book) => (
           <div
             key={book?.id}
             className="flex flex-col gap-4 rounded-xl border p-4 shadow"
@@ -50,7 +64,7 @@ export default function CategoryPage() {
               <p className="text-center text-sm italic">{book?.author}</p>
             </div>
 
-            <div className="rounded-lg bg-slate-100 p-4">
+            <div className="rounded-lg bg-blue-50 p-4">
               <p className="">
                 <span className="font-semibold">Quantity:</span>{" "}
                 {book?.quantity}
@@ -68,9 +82,12 @@ export default function CategoryPage() {
               </div>
             </div>
 
-            <button className="w-full rounded-lg bg-blue-500 px-4 py-1.5 font-semibold text-white transition-colors hover:bg-blue-600">
+            <Link
+              to={`/book/${book?.id}`}
+              className="block w-full rounded-lg bg-blue-500 px-4 py-1.5 text-center font-semibold text-white transition-colors hover:bg-blue-600"
+            >
               View Details
-            </button>
+            </Link>
           </div>
         ))}
       </section>

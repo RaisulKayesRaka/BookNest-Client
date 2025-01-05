@@ -14,6 +14,7 @@ import Register from "./pages/Register.jsx";
 import AuthProvider from "./provider/AuthProvider.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import AddBook from "./pages/AddBook.jsx";
+import BookDetails from "./pages/BookDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,8 +27,16 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/categories/:category",
+        path: "/category/:category",
         element: <CategoryPage />,
+      },
+      {
+        path: "/book/:id",
+        element: (
+          <PrivateRoute>
+            <BookDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/all-books",

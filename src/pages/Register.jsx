@@ -164,7 +164,7 @@ export default function Register() {
               onClick={handleGoogleLogIn}
               className="mt-4 w-full rounded-lg border border-blue-500 p-2 font-bold text-blue-500"
             >
-              Register with Google
+              Continue with Google
             </button>
             <div className="mt-4 text-center">
               Already have an account?{" "}

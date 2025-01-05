@@ -65,7 +65,7 @@ export default function BorrowedBooks() {
                 </h3>
               </div>
 
-              <div className="space-y-1 rounded-lg bg-slate-100 p-4">
+              <div className="space-y-1 rounded-lg bg-blue-50 p-4">
                 <p className="">
                   <span className="font-semibold">Borrowed Date:</span>{" "}
                   {book?.borrowed_date}

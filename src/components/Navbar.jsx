@@ -14,7 +14,7 @@ export default function Navbar() {
     document.getElementById("sidebar").style.transform = "translateX(16rem)";
   };
   return (
-    <nav className={`sticky top-0 z-50 bg-slate-100`}>
+    <nav className={`sticky top-0 z-50 bg-blue-50`}>
       <section className="mx-auto flex w-11/12 max-w-screen-xl items-center justify-between gap-4 py-4">
         <div className="flex items-center justify-center gap-2">
           <img src="/booknest.png" className="h-8" alt="BookNest Logo" />
@@ -129,7 +129,7 @@ export default function Navbar() {
       {/* sidebar */}
       <section
         id="sidebar"
-        className="fixed -right-64 bottom-0 top-0 z-50 flex h-screen w-64 flex-col gap-4 bg-slate-100 p-10 shadow transition duration-500 lg:hidden"
+        className="fixed -right-64 bottom-0 top-0 z-50 flex h-screen w-64 flex-col gap-4 bg-blue-50 p-10 shadow transition duration-500 lg:hidden"
       >
         <div>
           <button

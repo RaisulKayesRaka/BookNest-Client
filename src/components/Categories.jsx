@@ -17,7 +17,7 @@ export default function Categories() {
       <div className="h-8"></div>
       <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Link
-          to="/categories/Science Fiction"
+          to="/category/Science Fiction"
           className="flex flex-col items-center justify-center gap-2 rounded-lg border border-blue-500 p-4"
         >
           <img
@@ -28,14 +28,14 @@ export default function Categories() {
           <h3 className="font-semibold">Science Fiction</h3>
         </Link>
         <Link
-          to="/categories/Business"
+          to="/category/Business"
           className="flex flex-col items-center justify-center gap-2 rounded-lg border border-blue-500 p-4"
         >
           <img src="../assets/Business.png" alt="" className="h-16 w-16" />
           <h3 className="font-semibold">Business</h3>
         </Link>
         <Link
-          to="/categories/Personal Development"
+          to="/category/Personal Development"
           className="flex flex-col items-center justify-center gap-2 rounded-lg border border-blue-500 p-4"
         >
           <img
@@ -46,7 +46,7 @@ export default function Categories() {
           <h3 className="font-semibold">Personal Development</h3>
         </Link>
         <Link
-          to="/categories/History"
+          to="/category/History"
           className="flex flex-col items-center justify-center gap-2 rounded-lg border border-blue-500 p-4"
         >
           <img src="../assets/History.png" alt="" className="h-16 w-16" />

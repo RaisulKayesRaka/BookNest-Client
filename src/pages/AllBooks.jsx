@@ -53,7 +53,7 @@ export default function AllBooks() {
             onChange={(e) => setView(e.target.value)}
             name="view"
             id="view"
-            className="rounded-lg border px-4 py-2"
+            className="rounded-lg border px-4 py-2 font-semibold"
           >
             <option value="card">Card View</option>
             <option value="table">Table View</option>
@@ -81,7 +81,7 @@ export default function AllBooks() {
                   <p className="text-center text-sm italic">{book?.author}</p>
                 </div>
 
-                <div className="rounded-lg bg-slate-100 p-4">
+                <div className="rounded-lg bg-blue-50 p-4">
                   <p className="">
                     <span className="font-semibold">Quantity:</span>{" "}
                     {book?.quantity}
@@ -110,7 +110,7 @@ export default function AllBooks() {
         {view === "table" && (
           <section className="overflow-x-auto">
             <table className="w-full max-w-screen-xl border-collapse">
-              <thead className="bg-slate-100 text-center">
+              <thead className="bg-blue-50 text-center">
                 <tr>
                   <th className="px-4 py-2">
                     <span className="font-semibold">Cover</span>
