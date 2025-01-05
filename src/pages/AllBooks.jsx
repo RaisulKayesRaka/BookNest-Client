@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import ReactStars from "react-rating-stars-component";
 import axios from "axios";
+import Loading from "../components/Loading";
 
 export default function AllBooks() {
   const [view, setView] = useState("card");
@@ -51,14 +52,14 @@ export default function AllBooks() {
           </select>
         </section>
         {loading ? (
-          <p className="text-center font-semibold">Loading...</p>
+          <Loading />
         ) : (
           <>
             {view === "card" && (
               <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {books.map((book) => (
                   <div
-                    key={book?.id}
+                    key={book?._id}
                     className="flex flex-col gap-4 rounded-xl border p-4 shadow"
                   >
                     <img
@@ -133,7 +134,7 @@ export default function AllBooks() {
                   <tbody className="bg-white">
                     {books.map((book) => (
                       <tr
-                        key={book?.id}
+                        key={book?._id}
                         className="border-b border-gray-200 text-center md:table-row"
                       >
                         <td className="px-4 py-2">
