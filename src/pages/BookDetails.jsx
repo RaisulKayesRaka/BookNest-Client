@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async";
 import ReactStars from "react-rating-stars-component";
 import axios from "axios";
 import Loading from "../components/Loading";
+import toast from "react-hot-toast";
 
 export default function BookDetails() {
   const { id } = useParams();
@@ -28,7 +29,7 @@ export default function BookDetails() {
     fetchBook();
   }, [id]);
 
-  const handleBorrowSubmit = (e) => {
+  const handleBorrowSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const returnDate = form.returnDate.value;
@@ -36,13 +37,27 @@ export default function BookDetails() {
     const borrowerEmail = form.borrowerEmail.value;
 
     const borrowDetails = {
-      returnDate,
-      borrowerName,
-      borrowerEmail,
       bookId: book?._id,
+      borrowerEmail,
+      borrowerName,
+      borrowDate: new Date().toISOString().split("T")[0],
+      returnDate,
     };
 
-    console.log(borrowDetails);
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5000/borrow-book",
+        borrowDetails,
+      );
+      if (data.insertedId) {
+        toast.success("Book borrowed successfully");
+        document.getElementById("borrow_modal").close();
+        form.reset();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
   };
 
   return (
@@ -59,8 +74,12 @@ export default function BookDetails() {
           <Loading />
         ) : (
           <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-            <div className="flex items-center justify-center rounded-lg bg-blue-50 p-4">
-              <img src={book?.image} alt={book?.name} className="rounded-lg" />
+            <div className="flex h-full w-full items-center justify-center rounded-lg bg-blue-50 p-4">
+              <img
+                src={book?.image}
+                alt={book?.name}
+                className="w-full max-w-64 rounded-lg"
+              />
             </div>
             <div className="sm:col-span-1 md:col-span-2">
               <h2 className="text-2xl font-semibold">{book?.name}</h2>
