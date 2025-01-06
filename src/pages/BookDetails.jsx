@@ -57,7 +57,6 @@ export default function BookDetails() {
     } catch (error) {
       console.log(error);
     }
-
   };
 
   return (
