@@ -14,6 +14,7 @@ import Register from "./pages/Register.jsx";
 import AuthProvider from "./provider/AuthProvider.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import AddBook from "./pages/AddBook.jsx";
+import UpdateBook from "./pages/UpdateBook.jsx";
 import BookDetails from "./pages/BookDetails.jsx";
 import { Toaster } from "react-hot-toast";
 
@@ -60,6 +61,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <BorrowedBooks />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/update-book/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateBook />
           </PrivateRoute>
         ),
       },

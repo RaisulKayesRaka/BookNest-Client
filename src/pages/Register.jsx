@@ -69,7 +69,7 @@ export default function Register() {
       </Helmet>
       <section className="mx-auto w-11/12 max-w-screen-xl py-16">
         <div className="mx-auto flex max-w-[500px] items-center justify-center">
-          <div className="w-full rounded-lg p-8 shadow">
+          <div className="w-full rounded-lg p-8 shadow-lg">
             <h1 className="pb-8 text-center text-3xl font-semibold">
               Register
             </h1>

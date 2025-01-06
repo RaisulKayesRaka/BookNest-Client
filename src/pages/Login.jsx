@@ -55,7 +55,7 @@ export default function LogIn() {
       </Helmet>
       <section className="mx-auto w-11/12 max-w-screen-xl py-16">
         <div className="mx-auto flex max-w-[500px] items-center justify-center">
-          <div className="w-full rounded-lg p-8 shadow">
+          <div className="w-full rounded-lg p-8 shadow-lg">
             <h1 className="pb-8 text-center text-3xl font-semibold">Log In</h1>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <label htmlFor="email">
@@ -98,11 +98,6 @@ export default function LogIn() {
               {error && (
                 <p className="text-justify text-sm text-red-500">{error}</p>
               )}
-              <div>
-                <button type="button" className="inline underline">
-                  Forgot Password
-                </button>
-              </div>
               <div className="grid grid-cols-1 gap-4">
                 <button
                   type="submit"
