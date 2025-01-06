@@ -12,18 +12,15 @@ export default function BookDetails() {
   const { user } = useContext(AuthContext);
   const [book, setBook] = useState({});
   const [loading, setLoading] = useState(false);
-  const [isBorrowed, setIsBorrowed] = useState(false);
 
   useEffect(() => {
     const fetchBook = async () => {
       setLoading(true);
       try {
-        const { data } = await axios.get("http://localhost:5000/book/" + id);
-        setBook(data);
-        const borrowedBook = await axios.get(
-          "http://localhost:5000/borrowed-book/" + id,
+        const { data } = await axios.get(
+          "http://localhost:5000/book/" + id + "?email=" + user?.email,
         );
-        setIsBorrowed(borrowedBook.data);
+        setBook(data);
       } catch (error) {
         console.log(error);
       } finally {
@@ -32,7 +29,7 @@ export default function BookDetails() {
     };
 
     fetchBook();
-  }, [id]);
+  }, [id, user?.email]);
 
   const handleBorrowSubmit = async (e) => {
     e.preventDefault();
@@ -58,8 +55,7 @@ export default function BookDetails() {
         toast.success("Book borrowed successfully");
         document.getElementById("borrow_modal").close();
         form.reset();
-        setBook({ ...book, quantity: book?.quantity - 1 });
-        setIsBorrowed(true);
+        setBook({ ...book, quantity: book?.quantity - 1, isBorrowed: true });
       }
     } catch (error) {
       console.log(error);
@@ -118,7 +114,7 @@ export default function BookDetails() {
                 <p className="mb-2 font-semibold">Book Content:</p>
                 <p>{book?.bookContent}</p>
               </div>
-              {!isBorrowed ? (
+              {!book?.isBorrowed ? (
                 <button
                   onClick={() =>
                     document.getElementById("borrow_modal").showModal()
