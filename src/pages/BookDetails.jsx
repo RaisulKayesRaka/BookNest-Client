@@ -12,6 +12,7 @@ export default function BookDetails() {
   const { user } = useContext(AuthContext);
   const [book, setBook] = useState({});
   const [loading, setLoading] = useState(false);
+  const [isBorrowed, setIsBorrowed] = useState(false);
 
   useEffect(() => {
     const fetchBook = async () => {
@@ -19,6 +20,10 @@ export default function BookDetails() {
       try {
         const { data } = await axios.get("http://localhost:5000/book/" + id);
         setBook(data);
+        const borrowedBook = await axios.get(
+          "http://localhost:5000/borrowed-book/" + id,
+        );
+        setIsBorrowed(borrowedBook.data);
       } catch (error) {
         console.log(error);
       } finally {
@@ -54,6 +59,7 @@ export default function BookDetails() {
         document.getElementById("borrow_modal").close();
         form.reset();
         setBook({ ...book, quantity: book?.quantity - 1 });
+        setIsBorrowed(true);
       }
     } catch (error) {
       console.log(error);
@@ -112,14 +118,28 @@ export default function BookDetails() {
                 <p className="mb-2 font-semibold">Book Content:</p>
                 <p>{book?.bookContent}</p>
               </div>
-              <button
-                onClick={() =>
-                  document.getElementById("borrow_modal").showModal()
-                }
-                className="w-full rounded-lg bg-blue-500 px-4 py-2 font-semibold text-white"
-              >
-                Borrow this book
-              </button>
+              {!isBorrowed ? (
+                <button
+                  onClick={() =>
+                    document.getElementById("borrow_modal").showModal()
+                  }
+                  className={`w-full rounded-lg px-4 py-2 font-semibold text-white ${
+                    book?.quantity === 0
+                      ? "cursor-not-allowed bg-gray-400"
+                      : "bg-blue-500"
+                  }`}
+                  disabled={book?.quantity === 0}
+                >
+                  Borrow this book
+                </button>
+              ) : (
+                <button
+                  className={`w-full cursor-not-allowed rounded-lg bg-gray-400 px-4 py-2 font-semibold text-white`}
+                  disabled
+                >
+                  Borrowed
+                </button>
+              )}
             </div>
           </section>
         )}
