@@ -3,6 +3,7 @@ import axios from "axios";
 import { AuthContext } from "../provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import Loading from "../components/Loading";
+import toast from "react-hot-toast";
 
 export default function BorrowedBooks() {
   const { user } = useContext(AuthContext);
@@ -26,6 +27,21 @@ export default function BorrowedBooks() {
 
     fetchBooks();
   }, [user?.email]);
+
+  const handleReturnBook = async (bookId) => {
+    try {
+      const { data } = await axios.patch(
+        "http://localhost:5000/return-book/" + bookId,
+      );
+      if (data.deletedCount === 1) {
+        toast.success("Book returned successfully");
+        const updatedBooks = books.filter((book) => book._id !== bookId);
+        setBooks(updatedBooks);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -70,7 +86,10 @@ export default function BorrowedBooks() {
                   </p>
                 </div>
 
-                <button className="w-full rounded-lg bg-blue-500 px-4 py-1.5 font-semibold text-white transition-colors hover:bg-blue-600">
+                <button
+                  onClick={() => handleReturnBook(book?._id)}
+                  className="w-full rounded-lg bg-blue-500 px-4 py-1.5 font-semibold text-white transition-colors hover:bg-blue-600"
+                >
                   Return
                 </button>
               </div>

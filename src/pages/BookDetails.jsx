@@ -53,6 +53,7 @@ export default function BookDetails() {
         toast.success("Book borrowed successfully");
         document.getElementById("borrow_modal").close();
         form.reset();
+        setBook({ ...book, quantity: book?.quantity - 1 });
       }
     } catch (error) {
       console.log(error);
