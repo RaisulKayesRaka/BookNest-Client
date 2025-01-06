@@ -121,7 +121,7 @@ export default function BookDetails() {
                   }
                   className={`w-full rounded-lg px-4 py-2 font-semibold text-white ${
                     book?.quantity === 0
-                      ? "cursor-not-allowed bg-gray-400"
+                      ? "cursor-not-allowed bg-gray-400 opacity-50"
                       : "bg-blue-500"
                   }`}
                   disabled={book?.quantity === 0}
@@ -130,7 +130,7 @@ export default function BookDetails() {
                 </button>
               ) : (
                 <button
-                  className={`w-full cursor-not-allowed rounded-lg bg-gray-400 px-4 py-2 font-semibold text-white`}
+                  className={`w-full cursor-not-allowed rounded-lg bg-gray-400 px-4 py-2 font-semibold text-white opacity-50`}
                   disabled
                 >
                   Borrowed

@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 export default function LogIn() {
   const { setUser, userLogin, googleLogIn } = useContext(AuthContext);
@@ -23,12 +23,7 @@ export default function LogIn() {
       .then((userCredential) => {
         const user = userCredential.user;
         setUser(user);
-        Swal.fire({
-          title: "Login Successful",
-          icon: "success",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        toast.success("Login Successful");
         navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
@@ -41,12 +36,7 @@ export default function LogIn() {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        Swal.fire({
-          title: "Login Successful",
-          icon: "success",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        toast.success("Login Successful");
         navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {

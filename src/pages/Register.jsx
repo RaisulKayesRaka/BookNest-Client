@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 export default function Register() {
   const { setUser, createNewUser, updateUserProfile, googleLogIn } =
@@ -35,12 +35,7 @@ export default function Register() {
         setUser(user);
         updateUserProfile({ displayName: name, photoURL: photoUrl }).then(
           () => {
-            Swal.fire({
-              title: "Registration Successful",
-              icon: "success",
-              showConfirmButton: false,
-              timer: 1500,
-            });
+            toast.success("Registration successful!");
             navigate(location?.state ? location.state : "/");
           },
         );
@@ -55,12 +50,7 @@ export default function Register() {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        Swal.fire({
-          title: "Login Successful",
-          icon: "success",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        toast.success("Login Successful");
         navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
