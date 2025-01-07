@@ -28,6 +28,18 @@ export default function AllBooks() {
     fetchBooks();
   }, []);
 
+  const handleShowAvailableBooks = async () => {
+    setLoading(true);
+    try {
+      const { data } = await axios.get("http://localhost:5000/available-books");
+      setBooks(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <Helmet>
@@ -39,7 +51,7 @@ export default function AllBooks() {
         </h1>
         <section className="mb-4 flex items-center justify-between">
           <button
-            onClick={() => setBooks(books.filter((book) => book?.quantity > 0))}
+            onClick={handleShowAvailableBooks}
             className="rounded-lg bg-blue-500 px-4 py-2 font-semibold text-white transition-colors hover:bg-blue-600"
           >
             Show Available Books
