@@ -4,13 +4,14 @@ import ReactStars from "react-rating-stars-component";
 import axios from "axios";
 import Loading from "../components/Loading";
 import { AuthContext } from "../provider/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function AllBooks() {
   const { user } = useContext(AuthContext);
   const [view, setView] = useState("card");
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -114,13 +115,17 @@ export default function AllBooks() {
                         </div>
                       </div>
 
-                      <Link
-                        to={`/update-book/${book?._id}`}
+                      <button
+                        onClick={() => {
+                          if (book?.email === user?.email) {
+                            navigate(`/update-book/${book?._id}`);
+                          }
+                        }}
                         className={`block w-full rounded-lg px-4 py-1.5 text-center font-semibold text-white transition-colors ${book?.email !== user?.email ? "cursor-not-allowed bg-gray-400 opacity-50" : "bg-blue-500 hover:bg-blue-600"}`}
                         disabled={book?.email !== user?.email}
                       >
                         Update
-                      </Link>
+                      </button>
                     </div>
                   </>
                 ))}
