@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import { app } from "../../firebase.config";
 import { GoogleAuthProvider } from "firebase/auth";
+import axios from "axios";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -50,8 +51,25 @@ export default function AuthProvider({ children }) {
   };
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+    const unsubscribe = auth.onAuthStateChanged(async (currentUser) => {
       setUser(currentUser);
+      if (currentUser?.email) {
+        const { data } = await axios.post(
+          "http://localhost:5000/jwt",
+          {
+            email: currentUser?.email,
+          },
+          {
+            withCredentials: true,
+          },
+        );
+        console.log(data);
+      } else {
+        const { data } = await axios.get("http://localhost:5000/logout", {
+          withCredentials: true,
+        });
+        console.log(data);
+      }
       setLoading(false);
     });
     return () => unsubscribe();
