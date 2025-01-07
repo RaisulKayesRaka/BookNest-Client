@@ -47,18 +47,29 @@ export default function BookDetails() {
     };
 
     try {
-      const { data } = await axios.post(
+      const response = await axios.post(
         "http://localhost:5000/borrow-book",
         borrowDetails,
       );
-      if (data.insertedId) {
+      console.log(response.data);
+      if (response.data?.message) {
+        return toast.error(response.data?.message);
+      }
+      if (response.data?.insertedId) {
         toast.success("Book borrowed successfully");
-        document.getElementById("borrow_modal").close();
-        form.reset();
-        setBook({ ...book, quantity: book?.quantity - 1, isBorrowed: true });
+
+        setBook((prevBook) => ({
+          ...prevBook,
+          quantity: prevBook?.quantity - 1,
+          isBorrowed: true,
+        }));
       }
     } catch (error) {
       console.log(error);
+      toast.error("Failed to borrow book. Please try again.");
+    } finally {
+      document.getElementById("borrow_modal").close();
+      form.reset();
     }
   };
 

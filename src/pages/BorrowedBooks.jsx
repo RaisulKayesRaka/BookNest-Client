@@ -30,10 +30,16 @@ export default function BorrowedBooks() {
 
   const handleReturnBook = async (bookId) => {
     try {
-      const { data } = await axios.patch(
+      const response = await axios.patch(
         "http://localhost:5000/return-book/" + bookId,
       );
-      if (data.deletedCount === 1) {
+
+      if (response.data?.message) {
+        toast.error(response.data?.message);
+        return;
+      }
+
+      if (response.data?.deletedCount === 1) {
         toast.success("Book returned successfully");
         setBooks(books.filter((book) => book._id !== bookId));
       }
