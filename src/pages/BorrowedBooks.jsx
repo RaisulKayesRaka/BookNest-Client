@@ -71,7 +71,7 @@ export default function BorrowedBooks() {
         ) : (
           <>
             {books.length > 0 ? (
-              <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {books.map((book) => (
                   <div
                     key={book?._id}

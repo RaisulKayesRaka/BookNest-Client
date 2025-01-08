@@ -43,7 +43,7 @@ export default function CategoryPage() {
         {loading ? (
           <Loading />
         ) : (
-          <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {books.map((book) => (
               <div
                 key={book?._id}
@@ -71,7 +71,7 @@ export default function CategoryPage() {
                     <span className="font-semibold">Quantity:</span>{" "}
                     {book?.quantity}
                   </p>
-                  <div className="flex items-center gap-4">
+                  <div className="flex flex-wrap items-center space-x-3">
                     <p className="font-semibold">Rating:</p>
                     <ReactStars
                       count={5}
