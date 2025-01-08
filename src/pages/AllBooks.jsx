@@ -17,7 +17,7 @@ export default function AllBooks() {
     const fetchBooks = async () => {
       setLoading(true);
       try {
-        const { data } = await axios.get("http://localhost:5000/books", {
+        const { data } = await axios.get("https://booknest-server-brown.vercel.app/books", {
           withCredentials: true,
         });
         setBooks(data);
@@ -35,7 +35,7 @@ export default function AllBooks() {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        "http://localhost:5000/available-books",
+        "https://booknest-server-brown.vercel.app/available-books",
         {
           withCredentials: true,
         },

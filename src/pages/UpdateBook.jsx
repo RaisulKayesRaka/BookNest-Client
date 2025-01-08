@@ -18,7 +18,7 @@ export default function AddBook() {
       setLoading(true);
       try {
         const { data } = await axios.get(
-          "http://localhost:5000/book/" + id + "?email=" + user?.email,
+          "https://booknest-server-brown.vercel.app/book/" + id + "?email=" + user?.email,
           {
             withCredentials: true,
           },
@@ -51,7 +51,7 @@ export default function AddBook() {
 
     try {
       const { data } = await axios.put(
-        "http://localhost:5000/update-book/" + id,
+        "https://booknest-server-brown.vercel.app/update-book/" + id,
         newBook,
         {
           withCredentials: true,

@@ -15,7 +15,7 @@ export default function CategoryPage() {
       setLoading(true);
       try {
         const { data } = await axios.get(
-          "http://localhost:5000/books?category=" + category,
+          "https://booknest-server-brown.vercel.app/books?category=" + category,
           {
             withCredentials: true,
           },

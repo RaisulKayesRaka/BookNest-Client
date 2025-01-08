@@ -15,7 +15,7 @@ export default function BorrowedBooks() {
       setLoading(true);
       try {
         const { data } = await axios.get(
-          "http://localhost:5000/borrowed-books?email=" + user?.email,
+          "https://booknest-server-brown.vercel.app/borrowed-books?email=" + user?.email,
           {
             withCredentials: true,
           },
@@ -34,7 +34,7 @@ export default function BorrowedBooks() {
   const handleReturnBook = async (bookId) => {
     try {
       const response = await axios.patch(
-        "http://localhost:5000/return-book/" + bookId,
+        "https://booknest-server-brown.vercel.app/return-book/" + bookId,
         {
           email: user?.email,
         },

@@ -55,7 +55,7 @@ export default function AuthProvider({ children }) {
       setUser(currentUser);
       if (currentUser?.email) {
         await axios.post(
-          "http://localhost:5000/jwt",
+          "https://booknest-server-brown.vercel.app/jwt",
           {
             email: currentUser?.email,
           },
@@ -64,7 +64,7 @@ export default function AuthProvider({ children }) {
           },
         );
       } else {
-        await axios.get("http://localhost:5000/logout", {
+        await axios.get("https://booknest-server-brown.vercel.app/logout", {
           withCredentials: true,
         });
       }
