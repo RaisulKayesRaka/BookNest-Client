@@ -17,9 +17,12 @@ export default function AllBooks() {
     const fetchBooks = async () => {
       setLoading(true);
       try {
-        const { data } = await axios.get("https://booknest-server-brown.vercel.app/books", {
-          withCredentials: true,
-        });
+        const { data } = await axios.get(
+          "https://booknest-server-brown.vercel.app/books",
+          {
+            withCredentials: true,
+          },
+        );
         setBooks(data);
       } catch (error) {
         console.log(error);
@@ -57,7 +60,7 @@ export default function AllBooks() {
         <h1 className="mb-8 flex items-center justify-center rounded-lg border bg-blue-500 p-4 text-2xl font-semibold text-white">
           All Books
         </h1>
-        <section className="mb-4 flex items-center justify-between">
+        <section className="mb-4 flex flex-wrap items-center justify-between gap-4">
           <button
             onClick={handleShowAvailableBooks}
             className="rounded-lg bg-blue-500 px-4 py-2 font-semibold text-white transition-colors hover:bg-blue-600"
