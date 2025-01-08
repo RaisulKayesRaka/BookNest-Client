@@ -25,6 +25,9 @@ export default function AddBook() {
       const { data } = await axios.post(
         "http://localhost:5000/add-book",
         newBook,
+        {
+          withCredentials: true,
+        },
       );
       if (data.insertedId) {
         toast.success("Book added successfully");

@@ -19,6 +19,9 @@ export default function AddBook() {
       try {
         const { data } = await axios.get(
           "http://localhost:5000/book/" + id + "?email=" + user?.email,
+          {
+            withCredentials: true,
+          },
         );
         setBook(data);
       } catch (error) {
@@ -50,6 +53,9 @@ export default function AddBook() {
       const { data } = await axios.put(
         "http://localhost:5000/update-book/" + id,
         newBook,
+        {
+          withCredentials: true,
+        },
       );
       if (data.modifiedCount > 0) {
         toast.success("Book updated successfully");

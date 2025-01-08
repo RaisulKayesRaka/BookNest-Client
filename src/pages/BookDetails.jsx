@@ -19,6 +19,9 @@ export default function BookDetails() {
       try {
         const { data } = await axios.get(
           "http://localhost:5000/book/" + id + "?email=" + user?.email,
+          {
+            withCredentials: true,
+          },
         );
         setBook(data);
       } catch (error) {
@@ -50,8 +53,10 @@ export default function BookDetails() {
       const response = await axios.post(
         "http://localhost:5000/borrow-book",
         borrowDetails,
+        {
+          withCredentials: true,
+        },
       );
-      console.log(response.data);
       if (response.data?.message) {
         return toast.error(response.data?.message);
       }

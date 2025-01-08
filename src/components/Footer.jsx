@@ -1,4 +1,9 @@
-import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaInfoCircle,
+  FaLinkedin,
+  FaTwitter,
+} from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 
 export default function Footer() {
@@ -12,6 +17,10 @@ export default function Footer() {
             </p>
           </div>
           <div className="flex gap-4">
+            <FaInfoCircle
+              title="About"
+              className="cursor-pointer hover:text-orange-500"
+            />
             <IoMail
               title="info@booknest.com"
               className="cursor-pointer hover:text-red-500"

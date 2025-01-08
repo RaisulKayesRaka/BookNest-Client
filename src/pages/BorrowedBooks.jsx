@@ -16,6 +16,9 @@ export default function BorrowedBooks() {
       try {
         const { data } = await axios.get(
           "http://localhost:5000/borrowed-books?email=" + user?.email,
+          {
+            withCredentials: true,
+          },
         );
         setBooks(data);
       } catch (error) {
@@ -32,6 +35,12 @@ export default function BorrowedBooks() {
     try {
       const response = await axios.patch(
         "http://localhost:5000/return-book/" + bookId,
+        {
+          email: user?.email,
+        },
+        {
+          withCredentials: true,
+        },
       );
 
       if (response.data?.message) {

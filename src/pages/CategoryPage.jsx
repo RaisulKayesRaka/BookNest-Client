@@ -16,6 +16,9 @@ export default function CategoryPage() {
       try {
         const { data } = await axios.get(
           "http://localhost:5000/books?category=" + category,
+          {
+            withCredentials: true,
+          },
         );
         setBooks(data);
       } catch (error) {

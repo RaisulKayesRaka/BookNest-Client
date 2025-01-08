@@ -17,7 +17,9 @@ export default function AllBooks() {
     const fetchBooks = async () => {
       setLoading(true);
       try {
-        const { data } = await axios.get("http://localhost:5000/books");
+        const { data } = await axios.get("http://localhost:5000/books", {
+          withCredentials: true,
+        });
         setBooks(data);
       } catch (error) {
         console.log(error);
@@ -32,7 +34,12 @@ export default function AllBooks() {
   const handleShowAvailableBooks = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get("http://localhost:5000/available-books");
+      const { data } = await axios.get(
+        "http://localhost:5000/available-books",
+        {
+          withCredentials: true,
+        },
+      );
       setBooks(data);
     } catch (error) {
       console.log(error);
@@ -160,40 +167,38 @@ export default function AllBooks() {
                   </thead>
                   <tbody className="bg-white">
                     {books.map((book) => (
-                      <>
-                        <tr
-                          key={book?._id}
-                          className="border-b border-gray-200 text-center md:table-row"
-                        >
-                          <td className="px-4 py-2">
-                            <img
-                              src={book?.image}
-                              className="w-8 rounded-md object-contain"
-                              alt="Book Cover"
-                            />
-                          </td>
-                          <td className="px-4 py-2">{book?.name}</td>
-                          <td className="whitespace-nowrap px-4 py-2">
-                            {book?.authorName}
-                          </td>
-                          <td className="whitespace-nowrap px-4 py-2">
-                            <p className="rounded-lg bg-blue-100 px-3 py-1 text-center text-sm font-semibold text-blue-600">
-                              {book?.category}
-                            </p>
-                          </td>
-                          <td className="px-4 py-2">{book?.quantity}</td>
-                          <td className="px-4 py-2">{book?.rating}/5</td>
-                          <td className="px-4 py-2">
-                            <Link
-                              to={`/update-book/${book?._id}`}
-                              className={`block rounded-lg px-4 py-1.5 text-center font-semibold text-white transition-colors ${book?.email !== user?.email ? "cursor-not-allowed bg-gray-400 opacity-50" : "bg-blue-500 hover:bg-blue-600"}`}
-                              disabled={book?.email !== user?.email}
-                            >
-                              Update
-                            </Link>
-                          </td>
-                        </tr>
-                      </>
+                      <tr
+                        key={book?._id}
+                        className="border-b border-gray-200 text-center md:table-row"
+                      >
+                        <td className="px-4 py-2">
+                          <img
+                            src={book?.image}
+                            className="w-8 rounded-md object-contain"
+                            alt="Book Cover"
+                          />
+                        </td>
+                        <td className="px-4 py-2">{book?.name}</td>
+                        <td className="whitespace-nowrap px-4 py-2">
+                          {book?.authorName}
+                        </td>
+                        <td className="whitespace-nowrap px-4 py-2">
+                          <p className="rounded-lg bg-blue-100 px-3 py-1 text-center text-sm font-semibold text-blue-600">
+                            {book?.category}
+                          </p>
+                        </td>
+                        <td className="px-4 py-2">{book?.quantity}</td>
+                        <td className="px-4 py-2">{book?.rating}/5</td>
+                        <td className="px-4 py-2">
+                          <Link
+                            to={`/update-book/${book?._id}`}
+                            className={`block rounded-lg px-4 py-1.5 text-center font-semibold text-white transition-colors ${book?.email !== user?.email ? "cursor-not-allowed bg-gray-400 opacity-50" : "bg-blue-500 hover:bg-blue-600"}`}
+                            disabled={book?.email !== user?.email}
+                          >
+                            Update
+                          </Link>
+                        </td>
+                      </tr>
                     ))}
                   </tbody>
                 </table>
