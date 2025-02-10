@@ -51,6 +51,19 @@ export default function AllBooks() {
     }
   };
 
+  const handleSort = (e) => {
+    const sortBy = e.target.value;
+    const sortedBooks = [...books].sort((a, b) => {
+      if (sortBy === "Ascending") {
+        return a.name.localeCompare(b.name);
+      } else if (sortBy === "Descending") {
+        return b.name.localeCompare(a.name);
+      }
+      return 0;
+    });
+    setBooks(sortedBooks);
+  };
+
   return (
     <>
       <Helmet>
@@ -67,6 +80,16 @@ export default function AllBooks() {
           >
             Show Available Books
           </button>
+          <select
+            onChange={(e) => handleSort(e)}
+            name="sort"
+            id="sort"
+            className="rounded-lg border px-4 py-2 font-semibold"
+          >
+            <option value="">Sort By Name</option>
+            <option value="Ascending">Ascending</option>
+            <option value="Descending">Descending</option>
+          </select>
           <select
             onChange={(e) => setView(e.target.value)}
             name="view"
