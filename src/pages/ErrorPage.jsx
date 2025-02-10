@@ -7,15 +7,20 @@ export default function ErrorPage() {
   return (
     <>
       <Helmet>
-        <title>Error | BookNest</title>
+        <title>404 | BookNest</title>
       </Helmet>
       <div className="flex h-screen w-screen flex-col items-center justify-center">
-        <h3 className="text-2xl font-medium">Oops!</h3>
-        <h1 className="text-5xl font-bold text-red-500">{error.status}</h1>
-        <p className="text-xl font-medium">
-          {error.statusText || error.message}
-        </p>
-        <Link to="/" class="btn btn-sm mt-4 font-bold">
+        <h3 className="text-xl font-semibold">
+          Oops
+          <span className="animate-pulse text-3xl font-bold text-red-500">
+            !
+          </span>
+        </h3>
+        <img src="../assets/error.png" alt="" />
+        <Link
+          to="/"
+          class="mt-2 rounded-lg bg-blue-500 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-600 focus:scale-95"
+        >
           Back to Home
         </Link>
       </div>
