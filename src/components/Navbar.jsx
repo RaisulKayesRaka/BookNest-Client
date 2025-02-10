@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import { useContext } from "react";
@@ -17,10 +17,14 @@ export default function Navbar() {
     <nav className={`sticky top-0 z-50 bg-blue-50`}>
       <section className="mx-auto flex w-11/12 max-w-screen-xl items-center justify-between gap-4 py-4">
         <div className="flex items-center justify-center gap-2">
-          <img src="/booknest.png" className="h-8" alt="BookNest Logo" />
-          <span className="self-center whitespace-nowrap text-2xl font-semibold">
-            BookNest
-          </span>
+          <Link to="/">
+            <img src="/booknest.png" className="h-8" alt="BookNest Logo" />
+          </Link>
+          <Link to="/">
+            <span className="self-center whitespace-nowrap text-2xl font-semibold">
+              BookNest
+            </span>
+          </Link>
         </div>
         <div className="hidden items-center justify-center gap-8 whitespace-nowrap lg:flex">
           <NavLink

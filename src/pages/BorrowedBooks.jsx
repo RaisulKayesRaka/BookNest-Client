@@ -75,11 +75,11 @@ export default function BorrowedBooks() {
                 {books.map((book) => (
                   <div
                     key={book?._id}
-                    className="flex flex-col gap-4 rounded-xl border p-4 shadow"
+                    className="flex flex-col gap-4 rounded-lg border p-4 shadow"
                   >
                     <img
                       src={book?.image}
-                      className="aspect-video w-full rounded-md object-contain"
+                      className="aspect-video w-full rounded-lg object-contain"
                       alt="Book Cover"
                     />
                     <p className="rounded-lg bg-blue-100 px-4 py-1 text-center text-sm font-semibold text-blue-600">
