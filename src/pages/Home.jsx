@@ -3,6 +3,7 @@ import Banner from "../components/Banner";
 import LibraryInsights from "../components/LibraryInsights";
 import FAQ from "../components/FAQ";
 import Categories from "../components/Categories";
+import Testimonials from "../components/Testimonials";
 
 export default function Home() {
   return (
@@ -14,6 +15,8 @@ export default function Home() {
       <Categories />
       <hr className="mx-auto w-1/2 max-w-prose border-blue-500" />
       <LibraryInsights />
+      <hr className="mx-auto w-1/2 max-w-prose border-blue-500" />
+      <Testimonials />
       <hr className="mx-auto w-1/2 max-w-prose border-blue-500" />
       <FAQ />
     </>
