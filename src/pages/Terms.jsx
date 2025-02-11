@@ -10,7 +10,7 @@ export default function Terms() {
         <h1 className="mb-8 flex items-center justify-center rounded-lg bg-blue-500 p-4 text-2xl font-semibold text-white">
           Terms & Conditions
         </h1>
-        <section className="rounded-lg py-6 shadow">
+        <section className="rounded-lg p-6 shadow dark:shadow-gray-700">
           <p className="mb-4">
             Welcome to BookNest! These terms and conditions outline the rules
             and regulations for the use of BookNest's Website.
