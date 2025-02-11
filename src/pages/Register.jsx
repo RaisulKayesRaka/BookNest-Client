@@ -81,7 +81,7 @@ export default function Register() {
                   name="name"
                   placeholder="Name"
                   id="name"
-                  className="w-full rounded-lg border p-2"
+                  className="w-full rounded-lg border p-2 dark:border-gray-700 dark:bg-black"
                   required
                 />
               </label>
@@ -92,7 +92,7 @@ export default function Register() {
                   name="photoUrl"
                   placeholder="Photo URL"
                   id="photoUrl"
-                  className="w-full rounded-lg border p-2"
+                  className="w-full rounded-lg border p-2 dark:border-gray-700 dark:bg-black"
                   required
                 />
               </label>
@@ -104,7 +104,7 @@ export default function Register() {
                   name="email"
                   placeholder="Email"
                   id="email"
-                  className="w-full rounded-lg border p-2"
+                  className="w-full rounded-lg border p-2 dark:border-gray-700 dark:bg-black"
                   required
                 />
               </label>
@@ -116,7 +116,7 @@ export default function Register() {
                     name="password"
                     placeholder="Password"
                     id="password"
-                    className="w-full rounded-lg border p-2"
+                    className="w-full rounded-lg border p-2 dark:border-gray-700 dark:bg-black"
                     required
                   />
                   {showPassword ? (

@@ -18,7 +18,10 @@ export default function BookDetails() {
       setLoading(true);
       try {
         const { data } = await axios.get(
-          "https://booknest-server-brown.vercel.app/book/" + id + "?email=" + user?.email,
+          "https://booknest-server-brown.vercel.app/book/" +
+            id +
+            "?email=" +
+            user?.email,
           {
             withCredentials: true,
           },
@@ -92,7 +95,7 @@ export default function BookDetails() {
           <Loading />
         ) : (
           <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-            <div className="flex h-full w-full items-center justify-center rounded-lg bg-blue-50 p-4">
+            <div className="flex h-full w-full items-center justify-center rounded-lg bg-blue-50 p-4 dark:bg-gray-900">
               <img
                 src={book?.image}
                 alt={book?.name}
@@ -122,11 +125,11 @@ export default function BookDetails() {
                 />
                 <span className="text-sm">{book?.rating}/5</span>
               </div>
-              <div className="mb-4 rounded-lg bg-blue-50 p-4">
+              <div className="mb-4 rounded-lg bg-blue-50 p-4 dark:bg-gray-900">
                 <p className="mb-2 font-semibold">Short Description:</p>
                 <p>{book?.shortDescription}</p>
               </div>
-              <div className="mb-4 rounded-lg bg-blue-50 p-4">
+              <div className="mb-4 rounded-lg bg-blue-50 p-4 dark:bg-gray-900">
                 <p className="mb-2 font-semibold">Book Content:</p>
                 <p>{book?.bookContent}</p>
               </div>
@@ -156,7 +159,7 @@ export default function BookDetails() {
           </section>
         )}
         <dialog id="borrow_modal" className="modal">
-          <div className="modal-box">
+          <div className="modal-box dark:bg-gray-900">
             <form method="dialog">
               <button className="btn btn-circle btn-ghost btn-sm absolute right-2 top-2">
                 ✕
@@ -176,7 +179,7 @@ export default function BookDetails() {
                     id="borrowerName"
                     name="borrowerName"
                     defaultValue={user?.displayName}
-                    className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-blue-500"
+                    className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-blue-500 dark:border-gray-700"
                     required
                     disabled
                   />
@@ -193,7 +196,7 @@ export default function BookDetails() {
                     id="borrowerEmail"
                     name="borrowerEmail"
                     defaultValue={user?.email}
-                    className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-blue-500"
+                    className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-blue-500 dark:border-gray-700"
                     required
                     disabled
                   />
@@ -211,7 +214,7 @@ export default function BookDetails() {
                     id="returnDate"
                     name="returnDate"
                     min={new Date().toISOString().split("T")[0]}
-                    className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-blue-500"
+                    className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-blue-500 dark:border-gray-700 dark:bg-black"
                     required
                   />
                 </div>

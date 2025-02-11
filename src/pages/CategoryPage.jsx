@@ -47,7 +47,7 @@ export default function CategoryPage() {
             {books.map((book) => (
               <div
                 key={book?._id}
-                className="flex flex-col gap-4 rounded-lg border p-4 shadow"
+                className="flex flex-col gap-4 rounded-lg border p-4 shadow dark:border-gray-700"
               >
                 <img
                   src={book?.image}
@@ -66,7 +66,7 @@ export default function CategoryPage() {
                   </p>
                 </div>
 
-                <div className="rounded-lg bg-blue-50 p-4">
+                <div className="rounded-lg bg-blue-50 p-4 dark:bg-gray-900">
                   <p className="">
                     <span className="font-semibold">Quantity:</span>{" "}
                     {book?.quantity}

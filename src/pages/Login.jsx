@@ -65,7 +65,7 @@ export default function LogIn() {
                   name="email"
                   placeholder="Email"
                   id="email"
-                  className="w-full rounded-lg border p-2"
+                  className="w-full rounded-lg border p-2 dark:border-gray-700 dark:bg-black"
                   ref={emailRef}
                   required
                 />
@@ -78,7 +78,7 @@ export default function LogIn() {
                     name="password"
                     placeholder="Password"
                     id="password"
-                    className="w-full rounded-lg border p-2"
+                    className="w-full rounded-lg border p-2 dark:border-gray-700 dark:bg-black"
                     required
                   />
                   {showPassword ? (

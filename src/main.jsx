@@ -17,6 +17,8 @@ import AddBook from "./pages/AddBook.jsx";
 import UpdateBook from "./pages/UpdateBook.jsx";
 import BookDetails from "./pages/BookDetails.jsx";
 import { Toaster } from "react-hot-toast";
+import About from "./pages/About.jsx";
+import Terms from "./pages/Terms.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/terms",
+        element: <Terms />,
       },
       {
         path: "/category/:category",

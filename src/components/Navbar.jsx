@@ -37,6 +37,26 @@ export default function Navbar() {
           >
             Home
           </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive
+                ? "active font-semibold text-blue-500 underline decoration-blue-500 decoration-2 underline-offset-4"
+                : ""
+            }
+          >
+            About
+          </NavLink>
+          <NavLink
+            to="/terms"
+            className={({ isActive }) =>
+              isActive
+                ? "active font-semibold text-blue-500 underline decoration-blue-500 decoration-2 underline-offset-4"
+                : ""
+            }
+          >
+            Terms & Conditions
+          </NavLink>
           {user && user?.email && (
             <>
               <NavLink
@@ -159,6 +179,28 @@ export default function Navbar() {
               }
             >
               Home
+            </NavLink>
+            <NavLink
+              to="/about"
+              onClick={closeSidebar}
+              className={({ isActive }) =>
+                isActive
+                  ? "active font-semibold text-blue-500 underline decoration-blue-500 decoration-2 underline-offset-4"
+                  : ""
+              }
+            >
+              About
+            </NavLink>
+            <NavLink
+              to="/terms"
+              onClick={closeSidebar}
+              className={({ isActive }) =>
+                isActive
+                  ? "active font-semibold text-blue-500 underline decoration-blue-500 decoration-2 underline-offset-4"
+                  : ""
+              }
+            >
+              Terms & Conditions
             </NavLink>
             {user && user?.email && (
               <>
