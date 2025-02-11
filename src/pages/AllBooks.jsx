@@ -84,7 +84,7 @@ export default function AllBooks() {
             onChange={(e) => handleSort(e)}
             name="sort"
             id="sort"
-            className="rounded-lg border px-4 py-2 font-semibold"
+            className="rounded-lg border dark:border-gray-700 dark:bg-black px-4 py-2 font-semibold"
           >
             <option value="">Sort By Name</option>
             <option value="Ascending">Ascending</option>
@@ -94,7 +94,7 @@ export default function AllBooks() {
             onChange={(e) => setView(e.target.value)}
             name="view"
             id="view"
-            className="rounded-lg border px-4 py-2 font-semibold"
+            className="rounded-lg border dark:border-gray-700 dark:bg-black px-4 py-2 font-semibold"
           >
             <option value="card">Card View</option>
             <option value="table">Table View</option>
@@ -110,7 +110,7 @@ export default function AllBooks() {
                   <>
                     <div
                       key={book?._id}
-                      className="flex flex-col gap-4 rounded-lg border p-4 shadow"
+                      className="flex flex-col gap-4 rounded-lg border dark:border-gray-700 p-4 shadow"
                     >
                       <img
                         src={book?.image}
@@ -129,7 +129,7 @@ export default function AllBooks() {
                         </p>
                       </div>
 
-                      <div className="rounded-lg bg-blue-50 p-4">
+                      <div className="rounded-lg bg-blue-50 dark:bg-gray-900 p-4">
                         <p className="">
                           <span className="font-semibold">Quantity:</span>{" "}
                           {book?.quantity}

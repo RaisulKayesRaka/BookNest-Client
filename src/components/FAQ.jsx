@@ -59,7 +59,7 @@ const FAQ = () => {
           {faqs.map((faq) => (
             <div
               key={faq.id}
-              className="cursor-pointer rounded-lg border border-blue-500 bg-white p-4 transition-all duration-300"
+              className="cursor-pointer rounded-lg border border-blue-500 p-4 transition-all duration-300"
               onClick={() => toggleFAQ(faq.id)}
             >
               <div className="flex items-center justify-between">

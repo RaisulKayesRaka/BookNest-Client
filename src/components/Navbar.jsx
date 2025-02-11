@@ -14,7 +14,7 @@ export default function Navbar() {
     document.getElementById("sidebar").style.transform = "translateX(16rem)";
   };
   return (
-    <nav className={`sticky top-0 z-50 bg-blue-50`}>
+    <nav className={`sticky top-0 z-50 bg-blue-50 dark:bg-gray-900`}>
       <section className="mx-auto flex w-11/12 max-w-screen-xl items-center justify-between gap-4 py-4">
         <div className="flex items-center justify-center gap-2">
           <Link to="/">

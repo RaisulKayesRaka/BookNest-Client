@@ -3,7 +3,7 @@ import { IoMail } from "react-icons/io5";
 
 export default function Footer() {
   return (
-    <footer className={`bg-blue-50`}>
+    <footer className={`bg-blue-50 dark:bg-gray-900`}>
       <div className="mx-auto w-11/12 max-w-screen-xl">
         <div className="flex flex-col-reverse items-center justify-between gap-4 py-4 sm:flex-row">
           <div>
