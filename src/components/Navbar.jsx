@@ -133,7 +133,7 @@ export default function Navbar() {
       {/* sidebar */}
       <section
         id="sidebar"
-        className="fixed -right-64 bottom-0 top-0 z-50 flex h-screen w-64 flex-col gap-4 bg-blue-50 p-10 shadow transition duration-500 lg:hidden"
+        className="fixed -right-64 bottom-0 top-0 z-50 flex h-screen w-64 flex-col gap-4 bg-blue-50 dark:bg-gray-900 p-10 shadow transition duration-500 lg:hidden"
       >
         <div>
           <button
