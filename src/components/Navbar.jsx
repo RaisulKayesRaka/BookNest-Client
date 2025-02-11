@@ -81,7 +81,7 @@ export default function Navbar() {
               </div>
               <div className="absolute right-0 top-0 hidden w-72 group-hover:block">
                 <div>
-                  <div className="mt-12 space-y-4 rounded-lg bg-white p-4 shadow">
+                  <div className="mt-12 space-y-4 rounded-lg bg-white dark:bg-black p-4 shadow">
                     <p className="whitespace-nowrap font-semibold">
                       {user?.displayName}
                     </p>

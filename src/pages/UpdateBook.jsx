@@ -18,7 +18,10 @@ export default function AddBook() {
       setLoading(true);
       try {
         const { data } = await axios.get(
-          "https://booknest-server-brown.vercel.app/book/" + id + "?email=" + user?.email,
+          "https://booknest-server-brown.vercel.app/book/" +
+            id +
+            "?email=" +
+            user?.email,
           {
             withCredentials: true,
           },
@@ -76,7 +79,7 @@ export default function AddBook() {
           <Loading />
         ) : (
           <section className="mx-auto w-11/12 max-w-screen-xl py-8">
-            <h1 className="mb-8 flex items-center justify-center rounded-lg border bg-blue-500 p-4 text-2xl font-semibold text-white">
+            <h1 className="mb-8 flex items-center justify-center rounded-lg bg-blue-500 p-4 text-2xl font-semibold text-white">
               Update Book
             </h1>
             <section className="rounded-lg p-6 shadow">
@@ -93,7 +96,7 @@ export default function AddBook() {
                       name="image"
                       placeholder="Enter image URL"
                       defaultValue={book?.image}
-                      className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-[#749BC2]"
+                      className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-[#749BC2] dark:border-gray-700 dark:bg-black"
                       required
                     />
                   </div>
@@ -108,7 +111,7 @@ export default function AddBook() {
                       name="name"
                       placeholder="Enter title of the book"
                       defaultValue={book?.name}
-                      className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-[#749BC2]"
+                      className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-[#749BC2] dark:border-gray-700 dark:bg-black"
                       required
                     />
                   </div>
@@ -125,7 +128,7 @@ export default function AddBook() {
                       id="category"
                       name="category"
                       defaultValue={book?.category}
-                      className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-[#749BC2]"
+                      className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-[#749BC2] dark:border-gray-700 dark:bg-black"
                       required
                     >
                       <option value="Science Fiction">Science Fiction</option>
@@ -151,7 +154,7 @@ export default function AddBook() {
                       name="authorName"
                       placeholder="Enter author name"
                       defaultValue={book?.authorName}
-                      className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-[#749BC2]"
+                      className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-[#749BC2] dark:border-gray-700 dark:bg-black"
                       required
                     />
                   </div>
@@ -171,7 +174,7 @@ export default function AddBook() {
                       placeholder="Enter quantity"
                       defaultValue={book?.quantity}
                       min={0}
-                      className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-[#749BC2]"
+                      className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-[#749BC2] dark:border-gray-700 dark:bg-black"
                       required
                     />
                   </div>
@@ -189,7 +192,7 @@ export default function AddBook() {
                       min={1}
                       max={5}
                       step="0.1"
-                      className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-[#749BC2]"
+                      className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-[#749BC2] dark:border-gray-700 dark:bg-black"
                       required
                     />
                   </div>
@@ -208,7 +211,7 @@ export default function AddBook() {
                       rows={3}
                       placeholder="Enter short description"
                       defaultValue={book?.shortDescription}
-                      className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-[#749BC2]"
+                      className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-[#749BC2] dark:border-gray-700 dark:bg-black"
                       required
                     />
                   </div>
@@ -221,12 +224,12 @@ export default function AddBook() {
                       Book Content
                     </label>
                     <textarea
-                      id="bookContent"
+                      id="bookContent"x
                       name="bookContent"
                       rows={3}
                       placeholder="Enter book content"
                       defaultValue={book?.bookContent}
-                      className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-[#749BC2]"
+                      className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring focus:ring-[#749BC2] dark:border-gray-700 dark:bg-black"
                       required
                     />
                   </div>

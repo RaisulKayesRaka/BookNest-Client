@@ -70,7 +70,7 @@ export default function AllBooks() {
         <title>All Books | BookNest</title>
       </Helmet>
       <section className="mx-auto w-11/12 max-w-screen-xl py-8">
-        <h1 className="mb-8 flex items-center justify-center rounded-lg border bg-blue-500 p-4 text-2xl font-semibold text-white">
+        <h1 className="mb-8 flex items-center justify-center rounded-lg bg-blue-500 p-4 text-2xl font-semibold text-white">
           All Books
         </h1>
         <section className="mb-4 flex flex-wrap items-center justify-between gap-4">
@@ -168,7 +168,7 @@ export default function AllBooks() {
             {view === "table" && (
               <section className="overflow-x-auto">
                 <table className="w-full max-w-screen-xl border-collapse">
-                  <thead className="bg-blue-50 text-center">
+                  <thead className="bg-blue-50 dark:bg-gray-900 text-center">
                     <tr>
                       <th className="px-4 py-2">
                         <span className="font-semibold">Cover</span>
@@ -191,7 +191,7 @@ export default function AllBooks() {
                       <th className="px-4 py-2"></th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white">
+                  <tbody className="">
                     {books.map((book) => (
                       <tr
                         key={book?._id}

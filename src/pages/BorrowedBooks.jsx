@@ -15,7 +15,8 @@ export default function BorrowedBooks() {
       setLoading(true);
       try {
         const { data } = await axios.get(
-          "https://booknest-server-brown.vercel.app/borrowed-books?email=" + user?.email,
+          "https://booknest-server-brown.vercel.app/borrowed-books?email=" +
+            user?.email,
           {
             withCredentials: true,
           },
@@ -63,7 +64,7 @@ export default function BorrowedBooks() {
         <title>Borrowed Books | BookNest</title>
       </Helmet>
       <section className="mx-auto w-11/12 max-w-screen-xl py-8">
-        <h1 className="mb-8 flex items-center justify-center rounded-lg border bg-blue-500 p-4 text-2xl font-semibold text-white">
+        <h1 className="mb-8 flex items-center justify-center rounded-lg bg-blue-500 p-4 text-2xl font-semibold text-white">
           Borrowed Books
         </h1>
         {loading ? (
@@ -75,7 +76,7 @@ export default function BorrowedBooks() {
                 {books.map((book) => (
                   <div
                     key={book?._id}
-                    className="flex flex-col gap-4 rounded-lg border p-4 shadow"
+                    className="flex flex-col gap-4 rounded-lg border p-4 shadow dark:border-gray-700"
                   >
                     <img
                       src={book?.image}
@@ -91,7 +92,7 @@ export default function BorrowedBooks() {
                       </h3>
                     </div>
 
-                    <div className="space-y-1 rounded-lg bg-blue-50 p-4">
+                    <div className="space-y-1 rounded-lg bg-blue-50 p-4 dark:bg-gray-900">
                       <p className="">
                         <span className="font-semibold">Borrowed Date:</span>{" "}
                         {book?.borrowDate}
