@@ -37,36 +37,40 @@ export default function Navbar() {
           >
             Home
           </NavLink>
-          <NavLink
-            to="/all-books"
-            className={({ isActive }) =>
-              isActive
-                ? "active font-semibold text-blue-500 underline decoration-blue-500 decoration-2 underline-offset-4"
-                : ""
-            }
-          >
-            All Books
-          </NavLink>
-          <NavLink
-            to="/add-book"
-            className={({ isActive }) =>
-              isActive
-                ? "active font-semibold text-blue-500 underline decoration-blue-500 decoration-2 underline-offset-4"
-                : ""
-            }
-          >
-            Add Book
-          </NavLink>
-          <NavLink
-            to="/borrowed-books"
-            className={({ isActive }) =>
-              isActive
-                ? "active font-semibold text-blue-500 underline decoration-blue-500 decoration-2 underline-offset-4"
-                : ""
-            }
-          >
-            Borrowed Books
-          </NavLink>
+          {user && user?.email && (
+            <>
+              <NavLink
+                to="/all-books"
+                className={({ isActive }) =>
+                  isActive
+                    ? "active font-semibold text-blue-500 underline decoration-blue-500 decoration-2 underline-offset-4"
+                    : ""
+                }
+              >
+                All Books
+              </NavLink>
+              <NavLink
+                to="/add-book"
+                className={({ isActive }) =>
+                  isActive
+                    ? "active font-semibold text-blue-500 underline decoration-blue-500 decoration-2 underline-offset-4"
+                    : ""
+                }
+              >
+                Add Book
+              </NavLink>
+              <NavLink
+                to="/borrowed-books"
+                className={({ isActive }) =>
+                  isActive
+                    ? "active font-semibold text-blue-500 underline decoration-blue-500 decoration-2 underline-offset-4"
+                    : ""
+                }
+              >
+                Borrowed Books
+              </NavLink>
+            </>
+          )}
         </div>
         <div className="hidden items-center justify-center gap-4 lg:flex">
           {user && user?.email ? (
@@ -81,7 +85,7 @@ export default function Navbar() {
               </div>
               <div className="absolute right-0 top-0 hidden w-72 group-hover:block">
                 <div>
-                  <div className="mt-12 space-y-4 rounded-lg bg-white dark:bg-black p-4 shadow">
+                  <div className="mt-12 space-y-4 rounded-lg bg-white p-4 shadow dark:bg-black">
                     <p className="whitespace-nowrap font-semibold">
                       {user?.displayName}
                     </p>
@@ -133,7 +137,7 @@ export default function Navbar() {
       {/* sidebar */}
       <section
         id="sidebar"
-        className="fixed -right-64 bottom-0 top-0 z-50 flex h-screen w-64 flex-col gap-4 bg-blue-50 dark:bg-gray-900 p-10 shadow transition duration-500 lg:hidden"
+        className="fixed -right-64 bottom-0 top-0 z-50 flex h-screen w-64 flex-col gap-4 bg-blue-50 p-10 shadow transition duration-500 lg:hidden dark:bg-gray-900"
       >
         <div>
           <button
@@ -156,39 +160,43 @@ export default function Navbar() {
             >
               Home
             </NavLink>
-            <NavLink
-              to="/all-books"
-              onClick={closeSidebar}
-              className={({ isActive }) =>
-                isActive
-                  ? "active font-semibold text-blue-500 underline decoration-blue-500 decoration-2 underline-offset-4"
-                  : ""
-              }
-            >
-              All Books
-            </NavLink>
-            <NavLink
-              to="/add-book"
-              onClick={closeSidebar}
-              className={({ isActive }) =>
-                isActive
-                  ? "active font-semibold text-blue-500 underline decoration-blue-500 decoration-2 underline-offset-4"
-                  : ""
-              }
-            >
-              Add Book
-            </NavLink>
-            <NavLink
-              to="/borrowed-books"
-              onClick={closeSidebar}
-              className={({ isActive }) =>
-                isActive
-                  ? "active font-semibold text-blue-500 underline decoration-blue-500 decoration-2 underline-offset-4"
-                  : ""
-              }
-            >
-              Borrowed Books
-            </NavLink>
+            {user && user?.email && (
+              <>
+                <NavLink
+                  to="/all-books"
+                  onClick={closeSidebar}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "active font-semibold text-blue-500 underline decoration-blue-500 decoration-2 underline-offset-4"
+                      : ""
+                  }
+                >
+                  All Books
+                </NavLink>
+                <NavLink
+                  to="/add-book"
+                  onClick={closeSidebar}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "active font-semibold text-blue-500 underline decoration-blue-500 decoration-2 underline-offset-4"
+                      : ""
+                  }
+                >
+                  Add Book
+                </NavLink>
+                <NavLink
+                  to="/borrowed-books"
+                  onClick={closeSidebar}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "active font-semibold text-blue-500 underline decoration-blue-500 decoration-2 underline-offset-4"
+                      : ""
+                  }
+                >
+                  Borrowed Books
+                </NavLink>
+              </>
+            )}
           </div>
           <section className="space-y-4">
             {user && user?.email ? (
